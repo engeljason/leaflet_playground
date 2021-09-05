@@ -44,8 +44,8 @@ d3.json(usgs_url).then(function(featureCollection) {
             color: color,
             fillColor: color,
             fillOpacity: 0.5,
-            radius: d*1000
-        }).addTo(map);
+            radius: d > 0 ? (d**0.3)*20000: 1
+        }).addTo(map); // TODO:  add popups and legend
         
     }
     
