@@ -39,13 +39,17 @@ d3.json(usgs_url).then(function(featureCollection) {
                     d < 75 ? colors[5]:
                     d < 100 ? colors[6]:
                     colors[7];
-
+        var mag = feature.properties.mag;
+        var date = new Date(feature.properties.time).toDateString();
+        var time = new Date(feature.properties.time).toTimeString();
+        var place = feature.properties.place;
+        var tooltip = `Magnitude ${mag} earthquake occured ${place} on ${date} at ${time}`
         var circle = L.circle([coord[1], coord[0]], {
             color: color,
             fillColor: color,
             fillOpacity: 0.5,
-            radius: d > 0 ? (d**0.3)*20000: 1
-        }).addTo(map); // TODO:  add popups and legend
+            radius: mag * 10000
+        }).bindPopup(tooltip).addTo(map); // TODO:  add legend
         
     }
     
