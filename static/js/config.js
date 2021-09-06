@@ -1,0 +1,1 @@
+const mapboxAccessToken = "API_KEY" // Insert mapbox api key here
